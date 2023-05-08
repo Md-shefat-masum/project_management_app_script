@@ -3,7 +3,7 @@
 	--dark_light: #364351;
 	--montserrat: "Montserrat", sans-serif;
 	--text-color: rgb(197, 197, 197);
-	--nav_width: 300px;
+	--nav_width: 250px;
 }
 body {
 	color: var(--text-color);
@@ -62,7 +62,7 @@ header {
 			nav {
 				visibility: hidden;
 				opacity: 0;
-                left: -300px;
+				left: -300px;
 			}
 		}
 	}
@@ -83,17 +83,65 @@ header {
 	box-sizing: border-box;
 }
 
+.task_table {
+	padding-top: 20px;
+	background-color: var(--dark_light);
+	.task_table_list {
+		border-radius: 5px;
+		padding: 20px;
+		padding-top: 0;
+		height: calc(100vh - 140px);
+	}
+}
+table {
+	thead {
+		background-color: #6c757d;
+		position: sticky;
+		top: 0;
+	}
+	tr {
+		transition-duration: 0.3s;
+		cursor: pointer;
+		&:hover {
+			background-color: #6c757d95;
+		}
+		th,
+		td {
+			white-space: nowrap;
+			min-width: 150px;
+			text-align: center;
+			color: white;
+			padding: 15px !important;
+			&:nth-child(1) {
+				min-width: 100px;
+			}
+			&:nth-child(2) {
+				min-width: 100px;
+			}
+			&:nth-child(3) {
+				min-width: 100px;
+			}
+		}
+	}
+}
+
+.form-check-input:checked {
+	background-color: #212529;
+	border-color: white;
+}
+
 .sidebar {
 	background-color: var(--dark_light);
 	visibility: visible;
 	opacity: 1;
 	width: var(--nav_width);
-    overflow-x: hidden;
-    h1,nav{
+	overflow-x: hidden;
+	h1,
+	nav {
 		transition-duration: 0.3s;
-        position: relative;
-        left: 0;
-    }
+		position: relative;
+		left: 0;
+	}
 	h1 {
 		text-align: center;
 		font-weight: 600;

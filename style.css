@@ -3,7 +3,7 @@
   --dark_light: #364351;
   --montserrat: "Montserrat", sans-serif;
   --text-color: #c5c5c5;
-  --nav_width: 300px;
+  --nav_width: 250px;
 }
 body {
   color: var(--text-color);
@@ -66,6 +66,52 @@ header {
   overflow: auto;
   padding: 20px;
   box-sizing: border-box;
+}
+.task_table {
+  padding-top: 20px;
+  background-color: var(--dark_light);
+}
+.task_table .task_table_list {
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 0;
+  height: calc(100vh - 140px);
+}
+table thead {
+  background-color: #6c757d;
+  position: sticky;
+  top: 0;
+}
+table tr {
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+table tr:hover {
+  background-color: #6c757d95;
+}
+table tr th,
+table tr td {
+  white-space: nowrap;
+  min-width: 150px;
+  text-align: center;
+  color: white;
+  padding: 15px !important;
+}
+table tr th:nth-child(1),
+table tr td:nth-child(1) {
+  min-width: 100px;
+}
+table tr th:nth-child(2),
+table tr td:nth-child(2) {
+  min-width: 100px;
+}
+table tr th:nth-child(3),
+table tr td:nth-child(3) {
+  min-width: 100px;
+}
+.form-check-input:checked {
+  background-color: #212529;
+  border-color: white;
 }
 .sidebar {
   background-color: var(--dark_light);

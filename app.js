@@ -5,83 +5,85 @@ let dashboard = Vue.component("dashboard", {
 	methods: {},
 	template: `
         <section class="my-5">
-            <h2 class="mb-5">Today Progress</h2>
-            <div class="row gy-3">
-                <div class="col-md-4">
+            <div class="container">
+                <h2 class="mb-5">Today Progress</h2>
+                <div class="row gy-3">
+                    <div class="col-md-4">
 
-                    <div class="card progress_cards shadow-sm border-0">
-                        <div class="card-body">
-                            <h3 class="heading">Activity</h3>
-                            <div class=" bottom d-flex justify-content-between">
-                                <div class="progresss d-flex">
-                                    <div class="qty">00</div>%
+                        <div class="card progress_cards shadow-sm border-0">
+                            <div class="card-body">
+                                <h3 class="heading">Activity</h3>
+                                <div class=" bottom d-flex justify-content-between">
+                                    <div class="progresss d-flex">
+                                        <div class="qty">00</div>%
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa-solid fa-arrow-trend-up"></i>
+                                    </div>
                                 </div>
-                                <div class="icon">
-                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card  progress_cards shadow-sm border-0">
+                            <div class="card-body">
+                                <h3 class="heading">Completed task</h3>
+                                <div class=" bottom d-flex justify-content-between">
+                                    <div class="progresss d-flex">
+                                        <div class="qty">00</div>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa-solid fa-list-check"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card  progress_cards shadow-sm border-0">
-                        <div class="card-body">
-                            <h3 class="heading">Completed task</h3>
-                            <div class=" bottom d-flex justify-content-between">
-                                <div class="progresss d-flex">
-                                    <div class="qty">00</div>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa-solid fa-list-check"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <h2 class="mb-5 mt-5">Last week Progress</h2>
-            <div class="row gy-3">
-                <div class="col-md-4">
-                    <div class="card  progress_cards shadow-sm border-0">
-                        <div class="card-body">
-                            <h3 class="heading">Weekly Activity</h3>
-                            <div class=" bottom d-flex justify-content-between">
-                                <div class="progresss d-flex">
-                                    <div class="qty">20</div>%
-                                </div>
-                                <div class="icon">
-                                    <i class="fa-solid fa-arrow-trend-up"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card  progress_cards shadow-sm border-0">
-                        <div class="card-body">
-                            <h3 class="heading">Worked this week</h3>
-                            <div class=" bottom d-flex justify-content-between">
-                                <div class="progresss d-flex">
-                                    <div class="qty">20:23:00</div> min
-                                </div>
-                                <div class="icon">
-                                    <i class="far fa-clock"></i>
+                <h2 class="mb-5 mt-5">Last week Progress</h2>
+                <div class="row gy-3">
+                    <div class="col-md-4">
+                        <div class="card  progress_cards shadow-sm border-0">
+                            <div class="card-body">
+                                <h3 class="heading">Weekly Activity</h3>
+                                <div class=" bottom d-flex justify-content-between">
+                                    <div class="progresss d-flex">
+                                        <div class="qty">20</div>%
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa-solid fa-arrow-trend-up"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card  progress_cards shadow-sm border-0">
-                        <div class="card-body">
-                            <h3 class="heading">Completed task</h3>
-                            <div class=" bottom d-flex justify-content-between">
-                                <div class="progresss d-flex">
-                                    <div class="qty">20</div>
+                    <div class="col-md-4">
+                        <div class="card  progress_cards shadow-sm border-0">
+                            <div class="card-body">
+                                <h3 class="heading">Worked this week</h3>
+                                <div class=" bottom d-flex justify-content-between">
+                                    <div class="progresss d-flex">
+                                        <div class="qty">20:23:00</div> min
+                                    </div>
+                                    <div class="icon">
+                                        <i class="far fa-clock"></i>
+                                    </div>
                                 </div>
-                                <div class="icon">
-                                    <i class="fa-solid fa-list-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card  progress_cards shadow-sm border-0">
+                            <div class="card-body">
+                                <h3 class="heading">Completed task</h3>
+                                <div class=" bottom d-flex justify-content-between">
+                                    <div class="progresss d-flex">
+                                        <div class="qty">20</div>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fa-solid fa-list-check"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +97,66 @@ let tasks = Vue.component("task", {
 	created: function () {
 		console.log("task init");
 	},
-	template: "<div>task</div>",
+	template: `
+        <div class="task_table">
+            <div class="table-responsive task_table_list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Is Done</th>
+                            <th>Start</th>
+                            <th>Phase</th>
+                            <th>Task</th>
+                            <th>Sub Tasks</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Work Start Date</th>
+                            <th>Work End Date</th>
+                            <th>Work Times</th>
+                            <th>Delay</th>
+                            <th>Delay Comment</th>
+                            <th>Completion Days</th>
+                            <th>Assign To</th>
+                            <th>Progress %</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="i in 40">
+                            <td>1</td>
+                            <td class="text-center">
+                                <div class="form-check d-inline-block form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="form-check d-inline-block form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                </div>
+                            </td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                            <td>aaa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `,
 });
 
 const routes = [
