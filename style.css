@@ -194,6 +194,11 @@ table tr td:nth-child(3) {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.task_heading {
+  display: inline-block;
+  position: sticky;
+  left: 0;
+}
 .task_list_ul {
   display: inline-block;
   margin: 0;
@@ -202,8 +207,6 @@ table tr td:nth-child(3) {
   font-family: var(--montserrat);
   padding: 10px 0px;
   font-weight: bold;
-}
-.task_list_ul li:last-child {
   list-style-type: none;
 }
 .task_list_ul li ul {
@@ -223,12 +226,12 @@ table tr td:nth-child(3) {
   display: flex;
 }
 .task_list_ul li ul li ul li .task_content {
+  position: sticky;
+  left: -20px;
   width: 370px;
   display: flex;
   align-items: center;
   gap: 20px;
-  position: sticky;
-  left: -20px;
   padding-left: 20px;
   background: #212529;
   background: linear-gradient(90deg, #212529 57%, rgba(33, 37, 41, 0.653186) 85%, rgba(33, 37, 41, 0) 102%);

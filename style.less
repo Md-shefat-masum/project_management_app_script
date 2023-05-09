@@ -219,6 +219,11 @@ table {
 	background: #555;
 }
 
+.task_heading{
+	display: inline-block;
+	position: sticky;
+	left: 0;
+}
 .task_list_ul {
 	// border: 1px solid red;
 	display: inline-block;
@@ -227,9 +232,8 @@ table {
 		font-family: var(--montserrat);
 		padding: 10px 0px;
 		font-weight: bold;
-		&:last-child {
-			list-style-type: none;
-		}
+		list-style-type: none;
+
 		ul {
 			margin: 0;
 			li {
@@ -245,12 +249,13 @@ table {
 						list-style-type: none;
 						display: flex;
 						.task_content {
+							position: sticky;
+							left: -20px;
 							width: 370px;
 							display: flex;
 							align-items: center;
 							gap: 20px;
-							position: sticky;
-							left: -20px;
+
 							padding-left: 20px;
 							background: #212529;
 							background: linear-gradient(90deg, #212529 57%, rgba(33, 37, 41, 0.653186) 85%, rgba(33, 37, 41, 0) 102%);
@@ -263,7 +268,7 @@ table {
 	}
 }
 .cells {
-	&.headings{
+	&.headings {
 		position: sticky;
 		top: -20px;
 		background-color: var(--dark);
@@ -271,7 +276,6 @@ table {
 		padding: 15px 0px 20px;
 		min-width: 1978px;
 		background: linear-gradient(180deg, #212529 80%, rgba(33, 37, 41, 0.653186) 90%, rgba(33, 37, 41, 0) 100%);
-
 	}
 	display: flex;
 	// flex-wrap: wrap;
@@ -280,7 +284,7 @@ table {
 		width: 200px;
 		text-align: center;
 	}
-	.titles{
+	.titles {
 		width: 438px;
 	}
 	.end_date,
