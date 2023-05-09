@@ -241,8 +241,10 @@ table tr td:nth-child(3) {
 }
 .task_list_ul li ul li ul li .task_content i.fa-play {
   color: green;
+  cursor: pointer;
 }
 .task_list_ul li ul li ul li .task_content i.fa-pause {
+  cursor: pointer;
   color: yellow;
 }
 .cells {
