@@ -50,7 +50,73 @@
                 </header>
 
                 <div class="router_contents">
-                    <router-view></router-view>
+                    <ul class="task_list_ul">
+                        <li> Analysis </li>
+                        <li>
+                            <ul>
+                                <li> 'Analysis and design stage and gather data ' </li>
+                                <li>
+                                    <ul>
+                                        <li v-for="i in 10"> 
+                                            <div class="task_content">
+                                                <input type="checkbox" class="form-check-input d-inline-block">
+                                                <span>
+                                                    analys related softwares 
+                                                </span>
+                                            </div>
+                                            <div class="actions">
+                                                <div class="col start_date">
+                                                    18 Feb, 2023
+                                                </div>
+                                                <div class="col end_date">
+                                                    18 Feb, 2023
+                                                </div>
+                                                <div class="col work_start_time">
+                                                    18 Feb, 2023 5:23 pm
+                                                </div>
+                                                <div class="col work_end_time">
+                                                    18 Feb, 2023 6:30 pm
+                                                </div>
+                                                <div class="col work_times">
+                                                    16 hrs
+                                                </div>
+                                                <div class="col delay">
+                                                    4 hrs
+                                                </div>
+                                                <div class="col delay_comment">
+                                                    debug problem
+                                                </div>
+                                                <div class="col completion_days">
+                                                    Completion Days
+                                                </div>
+                                                <div class="col completion_days">
+                                                    Assign To
+                                                </div>
+                                                <div class="col is_done">
+                                                    <select>
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col progresses">
+                                                    30%
+                                                </div>
+                                                <div class="col priority">
+                                                    <select name="" id="">
+                                                        <option value="low">low</option>
+                                                        <option value="medium">medium</option>
+                                                        <option value="height">height</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                    <!-- <router-view></router-view> -->
                 </div>
                 
             </div>

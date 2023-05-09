@@ -218,3 +218,48 @@ table {
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+
+.task_list_ul {
+	border: 1px solid red;
+	display: inline-block;
+	li {
+		font-family: var(--montserrat);
+		padding: 10px 0px;
+		font-weight: bold;
+		&:last-child {
+			list-style-type: none;
+		}
+		ul {
+			li {
+				&:last-child {
+					list-style-type: none ;
+				}
+				ul {
+					padding-left: 0;
+					li {
+						font-weight: 400;
+						border: 1px solid rgb(105, 105, 105);
+						list-style-type: none;
+						display: flex;
+						.task_content{
+							min-width: 400px;
+							display: flex;
+							align-items: center;
+							gap: 20px;
+							position: sticky;
+							left: 0;
+							background-color: var(--dark);
+						}
+						.actions{
+							display: flex;
+							.col{
+								border: 1px solid red;
+								width: 200px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

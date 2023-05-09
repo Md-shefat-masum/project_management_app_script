@@ -194,4 +194,44 @@ table tr td:nth-child(3) {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.task_list_ul {
+  border: 1px solid red;
+  display: inline-block;
+}
+.task_list_ul li {
+  font-family: var(--montserrat);
+  padding: 10px 0px;
+  font-weight: bold;
+}
+.task_list_ul li:last-child {
+  list-style-type: none;
+}
+.task_list_ul li ul li:last-child {
+  list-style-type: none ;
+}
+.task_list_ul li ul li ul {
+  padding-left: 0;
+}
+.task_list_ul li ul li ul li {
+  font-weight: 400;
+  border: 1px solid #696969;
+  list-style-type: none;
+  display: flex;
+}
+.task_list_ul li ul li ul li .task_content {
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  left: 0;
+  background-color: var(--dark);
+}
+.task_list_ul li ul li ul li .actions {
+  display: flex;
+}
+.task_list_ul li ul li ul li .actions .col {
+  border: 1px solid red;
+  width: 200px;
+}
 /*# sourceMappingURL=./style.css.map */
