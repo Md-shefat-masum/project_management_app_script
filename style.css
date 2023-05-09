@@ -239,6 +239,12 @@ table tr td:nth-child(3) {
 .task_list_ul li ul li ul li .task_content span {
   flex: 1;
 }
+.task_list_ul li ul li ul li .task_content i.fa-play {
+  color: green;
+}
+.task_list_ul li ul li ul li .task_content i.fa-pause {
+  color: yellow;
+}
 .cells {
   display: flex;
 }
