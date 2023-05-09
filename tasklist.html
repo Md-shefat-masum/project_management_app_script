@@ -1,0 +1,121 @@
+
+    <div>
+        <div class="cells headings">
+            <div class="cols titles">
+                Titles
+            </div>
+            <div class="cols start_date">
+                Start Date
+            </div>
+            <div class="cols end_date">
+                End Date
+            </div>
+            <div class="cols work_start_time">
+                Work Start Time
+            </div>
+            <div class="cols work_end_time">
+                Work End Time
+            </div>
+            <div class="cols work_times">
+                Work Time
+            </div>
+            <div class="cols delay">
+                Delay
+            </div>
+            <div class="cols delay_comment">
+                Delay Comment
+            </div>
+            <div class="cols completion_days">
+                Completion Days
+            </div>
+            <div class="cols assign_to">
+                Assign to
+            </div>
+            <div class="cols is_done">
+                Is Done
+            </div>
+            <div class="cols priority">
+                priority
+            </div>
+            <div class="cols priority">
+                priority
+            </div>
+        </div>
+        <ul class="task_list_ul">
+            <? var data = getTasks();?>
+            <? for (var i = 0; i < data.length; i++) { ?>
+                <li> <?= data[i].title ?> </li>
+                <? if(data[i].children.length){ ?>
+                    <li>
+                        <ul>
+                            <? for (var j = 0; j < data[i].children.length; j++) { ?>
+                            <li> <?= data[i].children[j].title ?> </li>
+                                <? if(data[i].children[j].children.length){ ?>
+                                    <li>
+                                        <ul>
+                                            <? for (var k = 0; k < data[i].children[j].children.length; k++) { ?>
+                                                <li> 
+                                                    <div class="task_content">
+                                                        <input type="checkbox" class="form-check-input d-inline-block">
+                                                        <span>
+                                                            <?= data[i].children[j].children[k].title ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="cells">
+                                                        <div class="cols start_date">
+                                                            18 Feb, 2023
+                                                        </div>
+                                                        <div class="cols end_date">
+                                                            18 Feb, 2023
+                                                        </div>
+                                                        <div class="cols work_start_time">
+                                                            18 Feb, 2023 5:23 pm
+                                                        </div>
+                                                        <div class="cols work_end_time">
+                                                            18 Feb, 2023 6:30 pm
+                                                        </div>
+                                                        <div class="cols work_times">
+                                                            16 hrs
+                                                        </div>
+                                                        <div class="cols delay">
+                                                            4 hrs
+                                                        </div>
+                                                        <div class="cols delay_comment">
+                                                            debug problem
+                                                        </div>
+                                                        <div class="cols completion_days">
+                                                            3 days
+                                                        </div>
+                                                        <div class="cols assign_to">
+                                                            shefat
+                                                        </div>
+                                                        <div class="cols is_done">
+                                                            <select>
+                                                                <option value="0">0</option>
+                                                                <option value="1">1</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="cols progresses">
+                                                            30%
+                                                        </div>
+                                                        <div class="cols priority">
+                                                            <select name="" id="">
+                                                                <option value="low">low</option>
+                                                                <option value="medium">medium</option>
+                                                                <option value="height">height</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            <? } ?>
+                                        </ul>
+                                    </li>
+                                <? } ?>
+                            <? } ?>
+                        </ul>
+                    </li>  
+                <? } ?>
+            <? } ?>
+        </ul>
+    </div>
+    
