@@ -98,64 +98,114 @@ let tasks = Vue.component("task", {
 		console.log("task init");
 	},
 	template: `
-        <div class="task_table">
-            <div class="table-responsive task_table_list">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Is Done</th>
-                            <th>Start</th>
-                            <th>Phase</th>
-                            <th>Task</th>
-                            <th>Sub Tasks</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Work Start Date</th>
-                            <th>Work End Date</th>
-                            <th>Work Times</th>
-                            <th>Delay</th>
-                            <th>Delay Comment</th>
-                            <th>Completion Days</th>
-                            <th>Assign To</th>
-                            <th>Progress %</th>
-                            <th>Priority</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="i in 40">
-                            <td>1</td>
-                            <td class="text-center">
-                                <div class="form-check d-inline-block form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <div class="form-check d-inline-block form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                                </div>
-                            </td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                            <td>aaa</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div>
+        <div class="cells headings">
+            <div class="cols titles">
+                Titles
+            </div>
+            <div class="cols start_date">
+                Start Date
+            </div>
+            <div class="cols end_date">
+                End Date
+            </div>
+            <div class="cols work_start_time">
+                Work Start Time
+            </div>
+            <div class="cols work_end_time">
+                Work End Time
+            </div>
+            <div class="cols work_times">
+                Work Time
+            </div>
+            <div class="cols delay">
+                Delay
+            </div>
+            <div class="cols delay_comment">
+                Delay Comment
+            </div>
+            <div class="cols completion_days">
+                Completion Days
+            </div>
+            <div class="cols assign_to">
+                Assign to
+            </div>
+            <div class="cols is_done">
+                Is Done
+            </div>
+            <div class="cols priority">
+                priority
+            </div>
+            <div class="cols priority">
+                priority
             </div>
         </div>
+        <ul class="task_list_ul">
+            <li> Analysis </li>
+            <li>
+                <ul>
+                    <li> 'Analysis and design stage and gather data ' </li>
+                    <li>
+                        <ul>
+                            <li v-for="i in 15" :key="i"> 
+                                <div class="task_content">
+                                    <input type="checkbox" class="form-check-input d-inline-block">
+                                    <span>
+                                        analys related softwares 
+                                    </span>
+                                </div>
+                                <div class="cells">
+                                    <div class="cols start_date">
+                                        18 Feb, 2023
+                                    </div>
+                                    <div class="cols end_date">
+                                        18 Feb, 2023
+                                    </div>
+                                    <div class="cols work_start_time">
+                                        18 Feb, 2023 5:23 pm
+                                    </div>
+                                    <div class="cols work_end_time">
+                                        18 Feb, 2023 6:30 pm
+                                    </div>
+                                    <div class="cols work_times">
+                                        16 hrs
+                                    </div>
+                                    <div class="cols delay">
+                                        4 hrs
+                                    </div>
+                                    <div class="cols delay_comment">
+                                        debug problem
+                                    </div>
+                                    <div class="cols completion_days">
+                                        3 days
+                                    </div>
+                                    <div class="cols assign_to">
+                                        shefat
+                                    </div>
+                                    <div class="cols is_done">
+                                        <select>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                    <div class="cols progresses">
+                                        30%
+                                    </div>
+                                    <div class="cols priority">
+                                        <select name="" id="">
+                                            <option value="low">low</option>
+                                            <option value="medium">medium</option>
+                                            <option value="height">height</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>  
+        </ul>
+    </div>
     `,
 });
 
@@ -181,12 +231,10 @@ new Vue({
 		};
 	},
 	created: function () {
-        this.$nextTick(function () {
-        });
+		this.$nextTick(function () {});
 	},
 	updated: function () {
-        this.$nextTick(function () {
-        });
+		this.$nextTick(function () {});
 	},
 	methods: {
 		start_time_tracker: function () {
