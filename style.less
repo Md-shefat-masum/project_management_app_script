@@ -220,8 +220,9 @@ table {
 }
 
 .task_list_ul {
-	border: 1px solid red;
+	// border: 1px solid red;
 	display: inline-block;
+	margin: 0;
 	li {
 		font-family: var(--montserrat);
 		padding: 10px 0px;
@@ -230,36 +231,90 @@ table {
 			list-style-type: none;
 		}
 		ul {
+			margin: 0;
 			li {
 				&:last-child {
-					list-style-type: none ;
+					list-style-type: none;
 				}
 				ul {
 					padding-left: 0;
+					margin: 0;
 					li {
 						font-weight: 400;
 						border: 1px solid rgb(105, 105, 105);
 						list-style-type: none;
 						display: flex;
-						.task_content{
-							min-width: 400px;
+						.task_content {
+							width: 370px;
 							display: flex;
 							align-items: center;
 							gap: 20px;
 							position: sticky;
-							left: 0;
-							background-color: var(--dark);
-						}
-						.actions{
-							display: flex;
-							.col{
-								border: 1px solid red;
-								width: 200px;
-							}
+							left: -20px;
+							padding-left: 20px;
+							background: #212529;
+							background: linear-gradient(90deg, #212529 57%, rgba(33, 37, 41, 0.653186) 85%, rgba(33, 37, 41, 0) 102%);
+							// backdrop-filter: blur(0.5px);
 						}
 					}
 				}
 			}
+		}
+	}
+}
+.cells {
+	&.headings{
+		position: sticky;
+		top: -20px;
+		background-color: var(--dark);
+		z-index: 9999;
+		padding: 15px 0px 20px;
+		min-width: 1978px;
+		background: linear-gradient(180deg, #212529 80%, rgba(33, 37, 41, 0.653186) 90%, rgba(33, 37, 41, 0) 100%);
+
+	}
+	display: flex;
+	// flex-wrap: wrap;
+	.cols {
+		// border: 1px solid red;
+		width: 200px;
+		text-align: center;
+	}
+	.titles{
+		width: 438px;
+	}
+	.end_date,
+	.start_date {
+		width: 130px;
+	}
+	.work_start_time {
+		width: 190px;
+	}
+	.work_times {
+		width: 90px;
+	}
+	.delay {
+		width: 90px;
+	}
+	.delay_comment {
+		max-width: 200px;
+	}
+	.completion_days {
+		width: 155px;
+	}
+	.assign_to {
+		max-width: 120px;
+	}
+	.is_done {
+		max-width: 80px;
+	}
+	.progresses {
+		max-width: 80px;
+	}
+	.priority {
+		max-width: 80px;
+		select {
+			width: calc(100% - 10px);
 		}
 	}
 }

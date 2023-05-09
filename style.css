@@ -195,8 +195,8 @@ table tr td:nth-child(3) {
   background: #555;
 }
 .task_list_ul {
-  border: 1px solid red;
   display: inline-block;
+  margin: 0;
 }
 .task_list_ul li {
   font-family: var(--montserrat);
@@ -206,11 +206,15 @@ table tr td:nth-child(3) {
 .task_list_ul li:last-child {
   list-style-type: none;
 }
+.task_list_ul li ul {
+  margin: 0;
+}
 .task_list_ul li ul li:last-child {
-  list-style-type: none ;
+  list-style-type: none;
 }
 .task_list_ul li ul li ul {
   padding-left: 0;
+  margin: 0;
 }
 .task_list_ul li ul li ul li {
   font-weight: 400;
@@ -219,19 +223,67 @@ table tr td:nth-child(3) {
   display: flex;
 }
 .task_list_ul li ul li ul li .task_content {
-  min-width: 400px;
+  width: 370px;
   display: flex;
   align-items: center;
   gap: 20px;
   position: sticky;
-  left: 0;
-  background-color: var(--dark);
+  left: -20px;
+  padding-left: 20px;
+  background: #212529;
+  background: linear-gradient(90deg, #212529 57%, rgba(33, 37, 41, 0.653186) 85%, rgba(33, 37, 41, 0) 102%);
 }
-.task_list_ul li ul li ul li .actions {
+.cells {
   display: flex;
 }
-.task_list_ul li ul li ul li .actions .col {
-  border: 1px solid red;
+.cells.headings {
+  position: sticky;
+  top: -20px;
+  background-color: var(--dark);
+  z-index: 9999;
+  padding: 15px 0px 20px;
+  min-width: 1978px;
+  background: linear-gradient(180deg, #212529 80%, rgba(33, 37, 41, 0.653186) 90%, rgba(33, 37, 41, 0) 100%);
+}
+.cells .cols {
   width: 200px;
+  text-align: center;
+}
+.cells .titles {
+  width: 438px;
+}
+.cells .end_date,
+.cells .start_date {
+  width: 130px;
+}
+.cells .work_start_time {
+  width: 190px;
+}
+.cells .work_times {
+  width: 90px;
+}
+.cells .delay {
+  width: 90px;
+}
+.cells .delay_comment {
+  max-width: 200px;
+}
+.cells .completion_days {
+  width: 155px;
+}
+.cells .assign_to {
+  max-width: 120px;
+}
+.cells .is_done {
+  max-width: 80px;
+}
+.cells .progresses {
+  max-width: 80px;
+}
+.cells .priority {
+  max-width: 80px;
+}
+.cells .priority select {
+  width: calc(100% - 10px);
 }
 /*# sourceMappingURL=./style.css.map */
