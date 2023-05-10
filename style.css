@@ -281,6 +281,9 @@ table tr td:nth-child(3) {
   width: calc(100% - 10px);
   position: relative;
   z-index: 99999;
+  background: transparent;
+  color: white;
+  border: 0;
 }
 .cells .work_times {
   width: 155px;
@@ -293,6 +296,9 @@ table tr td:nth-child(3) {
 }
 .cells .delay input {
   width: 70px;
+  background: transparent;
+  color: white;
+  border: 0;
 }
 .cells .delay_comment {
   max-width: 200px;
@@ -300,6 +306,9 @@ table tr td:nth-child(3) {
 .cells .delay_comment textarea {
   width: 180px;
   height: 28px;
+  background: transparent;
+  color: white;
+  border: 0;
 }
 .cells .completion_days {
   width: 155px;
@@ -318,5 +327,8 @@ table tr td:nth-child(3) {
 }
 .cells .priority select {
   width: calc(100% - 10px);
+  background: transparent;
+  color: white;
+  border: 0;
 }
 /*# sourceMappingURL=./style.css.map */
