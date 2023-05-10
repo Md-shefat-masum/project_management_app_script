@@ -233,7 +233,7 @@ table tr td:nth-child(3) {
   display: flex;
   align-items: center;
   gap: 20px;
-  z-index: 9999;
+  z-index: 999900;
   padding-left: 20px;
   background: #212529;
   background: linear-gradient(90deg, #212529 57%, rgba(33, 37, 41, 0.653186) 85%, rgba(33, 37, 41, 0) 102%);
@@ -283,7 +283,7 @@ table tr td:nth-child(3) {
   z-index: 99999;
 }
 .cells .work_times {
-  width: 125px;
+  width: 155px;
 }
 .cells .work_times.active {
   color: #00eaff;
@@ -296,6 +296,10 @@ table tr td:nth-child(3) {
 }
 .cells .delay_comment {
   max-width: 200px;
+}
+.cells .delay_comment textarea {
+  width: 180px;
+  height: 28px;
 }
 .cells .completion_days {
   width: 155px;
