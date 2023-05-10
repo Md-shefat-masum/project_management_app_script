@@ -258,7 +258,7 @@ table tr td:nth-child(3) {
   background-color: var(--dark);
   z-index: 999;
   padding: 15px 0px 20px;
-  min-width: 1978px;
+  min-width: 2010px;
   background: linear-gradient(180deg, #212529 80%, rgba(33, 37, 41, 0.653186) 90%, rgba(33, 37, 41, 0) 100%);
 }
 .cells .cols {
