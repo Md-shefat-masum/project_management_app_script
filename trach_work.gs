@@ -1,6 +1,6 @@
 function set_track_work_time(data) {
   const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
-  const sheet = ss.getSheetByName('test');
+  const sheet = ss.getSheetByName('work_time_history');
   var last_row = sheet.getLastRow() + 1;
   sheet.getRange(last_row, 1).setValue(data?.date);
   sheet.getRange(last_row, 2).setValue(data?.start_time);
@@ -14,10 +14,10 @@ function set_track_work_time(data) {
 
 function sum_of_track_secs() {
   const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
-  const sheet = ss.getSheetByName('test');
+  const sheet = ss.getSheetByName('work_time_history');
   var last_row = sheet.getLastRow();
-  const data = sheet.getRange(`E2:E`+last_row).getValues();
-  return data.reduce((t,i)=>t+=(+i),0);
+  const data = sheet.getRange(`E2:E` + last_row).getValues();
+  return data.reduce((t, i) => t += (+i), 0);
 }
 
 function getTasks() {
@@ -58,7 +58,7 @@ function getTasks() {
 
     if (new_parent == '' && data[i][1] == '' && data[i][2] != '') {
       tree_list[parent_no].children[one_step_child_no - 1].children.push({
-        row_no: 12+i,
+        row_no: 12 + i,
         title: data[i][2],
 
         start_date: data[i][3],
@@ -68,17 +68,18 @@ function getTasks() {
         end_date_formated: format_date(data[i][4]),
 
         work_start_time: data[i][5],
-        work_start_time_formated: format_date_time(data[i][5]),
+        work_start_time_formated: data[i][5] ? format_date_time(data[i][5]) : '',
 
         work_end_time: data[i][6],
-        work_end_time_formated: format_date_time(data[i][6]),
+        work_end_time_formated: data[i][6] ? format_date_time(data[i][6]) : '',
 
         work_times: data[i][7],
+        work_times_ms: data[i][7] ? hours_to_ms(data[i][7]) : '',
 
         delay: data[i][8],
         delay_comment: data[i][9],
 
-        completion_days: date_diff_days(data[i][5], data[i][6]),
+        completion_days: data[i][5] && data[i][6] ? date_diff_days(data[i][5], data[i][6]) : '',
 
         assign_to: data[i][11],
         is_done: data[i][12],
@@ -115,7 +116,36 @@ function date_diff_days(from = "2023-06-09T01:00:00+0000", to = "2023-06-10T05:2
   return diffInDays == 0 ? 1 : diffInDays;
 }
 
+function complete_task(row_no, data = 1) {
+  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
+  const sheet = ss.getSheetByName('maintain gant_chart');
+  sheet.getRange(`M${row_no}`).setValue(data);
+}
 
+function save_work_start_time(row_no, data) {
+  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
+  const sheet = ss.getSheetByName('maintain gant_chart');
+  sheet.getRange(`F${row_no}`).setValue(data);
+}
+
+function save_work_end_time(row_no, data) {
+  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
+  const sheet = ss.getSheetByName('maintain gant_chart');
+  sheet.getRange(`G${row_no}`).setValue(data);
+}
+
+function ms_to_hours(ms) {
+  return new Date(ms).toISOString().slice(11, 19);
+}
+
+function hours_to_ms(timeString) {
+  const [hours, minutes, seconds] = timeString.split(':').map(Number);
+
+  const totalMilliseconds = (hours * 60 * 60 * 1000) +
+    (minutes * 60 * 1000) +
+    (seconds * 1000);
+  return totalMilliseconds;
+}
 
 
 
