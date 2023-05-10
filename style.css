@@ -279,6 +279,8 @@ table tr td:nth-child(3) {
 .cells .work_start_time input,
 .cells .work_times input {
   width: calc(100% - 10px);
+  position: relative;
+  z-index: 99999;
 }
 .cells .delay {
   width: 90px;
