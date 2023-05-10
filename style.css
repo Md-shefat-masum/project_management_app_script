@@ -291,6 +291,9 @@ table tr td:nth-child(3) {
 .cells .delay {
   width: 90px;
 }
+.cells .delay input {
+  width: 70px;
+}
 .cells .delay_comment {
   max-width: 200px;
 }
