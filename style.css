@@ -274,7 +274,11 @@ table tr td:nth-child(3) {
   width: 190px;
 }
 .cells .work_times {
-  width: 90px;
+  width: 125px;
+}
+.cells .work_start_time input,
+.cells .work_times input {
+  width: calc(100% - 10px);
 }
 .cells .delay {
   width: 90px;
