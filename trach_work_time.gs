@@ -22,28 +22,28 @@ function sum_of_track_secs() {
   return data.reduce((t, i) => t += (+i), 0);
 }
 
-function get_project_start_date(){
+function get_project_start_date() {
   const ss = SpreadsheetApp.openByUrl(sheet_link)
   const sheet = ss.getSheetByName('gant_chart');
   const value = sheet.getRange('B1').getValue();
   return format_date(value);
 }
 
-function count_total_task(){
+function count_total_task() {
   const ss = SpreadsheetApp.openByUrl(sheet_link)
   const sheet = ss.getSheetByName('gant_chart');
   const value = sheet.getRange('B2').getValue();
   return value;
 }
 
-function get_completed_progress(){
+function get_completed_progress() {
   const ss = SpreadsheetApp.openByUrl(sheet_link)
   const sheet = ss.getSheetByName('gant_chart');
   const value = sheet.getRange('B4').getValue();
   return value;
 }
 
-function count_completed_task(){
+function count_completed_task() {
   const ss = SpreadsheetApp.openByUrl(sheet_link)
   const sheet = ss.getSheetByName('gant_chart');
   const value = sheet.getRange('B3').getValue();
@@ -122,6 +122,24 @@ function getTasks() {
   }
   Logger.log(tree_list[0]);
   return tree_list;
+}
+
+function date_diff() {
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName('gant_chart');
+  const value = sheet.getRange('B1').getValue();
+
+  var dt1 = new Date(), // today's date
+    dt2 = new Date(value); // your date from API
+
+  // get milliseconds
+  var t1 = dt1.getTime(),
+    t2 = dt2.getTime();
+
+  var diffInDays = Math.floor((t1 - t2) / (24 * 3600 * 1000));
+  // 24*3600*1000 is milliseconds in a day
+  console.log(diffInDays);
+  return diffInDays;
 }
 
 function format_date(date, format = "dd MMM, yyyy") {
