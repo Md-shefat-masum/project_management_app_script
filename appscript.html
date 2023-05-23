@@ -14,7 +14,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://md-shefat-masum.github.io/project_management_app_script/style.css">
+  <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+  </script>
 </head>
 
 <body class="bg-dark">
@@ -80,16 +94,17 @@
       template: `
             <section class="my-5">
                 <div class="container">
-                    <h2 class="mb-5">Today Progress</h2>
+                    <h2 class="mb-5">At A Glance</h2>
                     <div class="row gy-3">
-                        <div class="col-md-4">
-
+                      <div class="col-md-4">
                             <div class="card progress_cards shadow-sm border-0">
                                 <div class="card-body">
-                                    <h3 class="heading">Activity</h3>
+                                    <h3 class="heading"> Start Date </h3>
                                     <div class=" bottom d-flex justify-content-between">
                                         <div class="progresss d-flex">
-                                            <div class="qty">00</div>%
+                                            <div class="qty">
+                                              <?= get_project_start_date() ?> 
+                                            </div>
                                         </div>
                                         <div class="icon">
                                             <i class="fa-solid fa-arrow-trend-up"></i>
@@ -98,13 +113,34 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="card progress_cards shadow-sm border-0">
+                                <div class="card-body">
+                                    <h3 class="heading"> Progress </h3>
+                                    <div class=" bottom d-flex justify-content-between">
+                                        <div class="progresss d-flex">
+                                            <div class="qty">
+                                              <?= get_completed_progress() ?> 
+                                            </div>%
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa-solid fa-arrow-trend-up"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-4">
                             <div class="card  progress_cards shadow-sm border-0">
                                 <div class="card-body">
-                                    <h3 class="heading">Completed task</h3>
+                                    <h3 class="heading">Total task</h3>
                                     <div class=" bottom d-flex justify-content-between">
                                         <div class="progresss d-flex">
-                                            <div class="qty">00</div>
+                                            <div class="qty"> 
+                                              <?= count_total_task() ?> 
+                                            </div>
                                         </div>
                                         <div class="icon">
                                             <i class="fa-solid fa-list-check"></i>
@@ -113,56 +149,45 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="card  progress_cards shadow-sm border-0">
+                                <div class="card-body">
+                                    <h3 class="heading">Completed task</h3>
+                                    <div class=" bottom d-flex justify-content-between">
+                                        <div class="progresss d-flex">
+                                            <div class="qty"> 
+                                              <?= count_completed_task() ?> 
+                                            </div>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa-solid fa-list-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card  progress_cards shadow-sm border-0">
+                                <div class="card-body">
+                                    <h3 class="heading">Remaining task</h3>
+                                    <div class=" bottom d-flex justify-content-between">
+                                        <div class="progresss d-flex">
+                                            <div class="qty"> 
+                                              <?= count_total_task() - count_completed_task() ?> 
+                                            </div>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa-solid fa-list-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <h2 class="mb-5 mt-5">Last week Progress</h2>
-                    <div class="row gy-3">
-                        <div class="col-md-4">
-                            <div class="card  progress_cards shadow-sm border-0">
-                                <div class="card-body">
-                                    <h3 class="heading">Weekly Activity</h3>
-                                    <div class=" bottom d-flex justify-content-between">
-                                        <div class="progresss d-flex">
-                                            <div class="qty">20</div>%
-                                        </div>
-                                        <div class="icon">
-                                            <i class="fa-solid fa-arrow-trend-up"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card  progress_cards shadow-sm border-0">
-                                <div class="card-body">
-                                    <h3 class="heading">Worked this week</h3>
-                                    <div class=" bottom d-flex justify-content-between">
-                                        <div class="progresss d-flex">
-                                            <div class="qty">20:23:00</div> min
-                                        </div>
-                                        <div class="icon">
-                                            <i class="far fa-clock"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card  progress_cards shadow-sm border-0">
-                                <div class="card-body">
-                                    <h3 class="heading">Completed task</h3>
-                                    <div class=" bottom d-flex justify-content-between">
-                                        <div class="progresss d-flex">
-                                            <div class="qty">20</div>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="fa-solid fa-list-check"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
         `,
@@ -185,6 +210,7 @@
           if(event.target.classList.contains('fa-pause')){
             event.target.classList.remove('fa-pause');
             event.target.classList.add('fa-play');
+            document.querySelector('.work_times.active').classList.remove('active')
             that.save_end_time(row_no, that.min); 
             clearInterval(that.interval);
           }
@@ -198,7 +224,6 @@
               event.target.classList.add('fa-play');
               document.querySelector('.task_list_ul i.fa-pause').scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
               return 0;
-
             }
 
             that.save_start_time(row_no);
@@ -225,7 +250,6 @@
               total_sec: sec * 1000,
               row_no: row_no,
             });
-
         },
         save_start_time: function(row_no){
             google.script.run.set_track_work_time({
@@ -235,7 +259,10 @@
               total_sec: 0,
               row_no: row_no,
             });
-
+            Toast.fire({
+              icon: 'success',
+              title: 'Timer Started'
+            })
         },
         render_work_time: function(){
           let that = this;
@@ -250,6 +277,7 @@
           let that = this;
           let this_task_working_hour = document.getElementById("ms_"+row_no);  
 
+          !this_task_working_hour.classList.contains('active') && this_task_working_hour.classList.add('active');
           var mili_sec = +this_task_working_hour.dataset.ms;
           this_task_working_hour.innerHTML = new Date(mili_sec).toISOString().slice(11, 19) + ` hrs`;
           this_task_working_hour.dataset.ms = mili_sec+1000;
@@ -267,12 +295,45 @@
         },
         complete_task: function(event, row_no){
           google.script.run.complete_task(row_no, event.target.checked==true?1:0);
+          if(event.target.checked==true){
+            Toast.fire({
+              icon: 'success',
+              title: 'task added to completed'
+            })
+          }else{
+            Toast.fire({
+              icon: 'warning',
+              title: 'task removed from completed'
+            })
+          }
         },
         save_work_start_time: function(event, row_no){
           google.script.run.save_work_start_time(row_no, event.target.value||'');
+          Toast.fire({
+            icon: 'success',
+            title: 'work start time been saved'
+          })
         },
         save_work_end_time: function(event, row_no){
           google.script.run.save_work_end_time(row_no, event.target.value||'');
+          Toast.fire({
+            icon: 'success', 
+            title: 'work end time been saved'
+          })
+        },
+        save_item_delay: function(event, row_no){
+          google.script.run.save_item_delay(row_no, event.target.value||'');
+          Toast.fire({
+            icon: 'success', 
+            title: 'item delay been saved'
+          })
+        },
+        save_item_delay_comment: function(event, row_no){
+          google.script.run.save_item_delay_comment(row_no, event.target.value||'');
+          Toast.fire({
+            icon: 'success', 
+            title: 'item delay comment been saved'
+          })
         },
 
       },
@@ -378,10 +439,18 @@
                                                                   <?= item.work_times ?> hrs
                                                               </div>
                                                               <div class="cols delay">
+                                                                <? if(item.delay != '') { ?>
                                                                   <?= item.delay ?> hrs
+                                                                <? } else{ ?>
+                                                                  <input type="number" @change="save_item_delay($event,<?= item.row_no ?>)"> hrs
+                                                                <? } ?>
                                                               </div>
                                                               <div class="cols delay_comment">
-                                                                  <?= item.delay_comment ?>
+                                                                <? if(item.delay_comment != '') { ?>
+                                                                  <?= item.delay_comment ?> hrs
+                                                                <? } else{ ?>
+                                                                  <textarea type="number" @change="save_item_delay_comment($event,<?= item.row_no ?>)"></textarea>
+                                                                <? } ?>
                                                               </div>
                                                               <div class="cols completion_days">
                                                                   <?= item.completion_days ?> days
