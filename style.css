@@ -306,7 +306,7 @@ table tr td:nth-child(3) {
 }
 .cells .delay_comment textarea {
   width: 180px;
-  height: 28px;
+  height: 30px;
   background: transparent;
   color: white;
   border: 1px solid gray;
