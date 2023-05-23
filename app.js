@@ -8,7 +8,7 @@ let dashboard = Vue.component("dashboard", {
               <div class="container">
                   <h2 class="mb-5">At A Glance</h2>
                   <div class="row gy-3">
-                    <div class="col-md-4">
+                        <div class="col-md-4">
                           <div class="card progress_cards shadow-sm border-0">
                               <div class="card-body">
                                   <h3 class="heading"> Start Date </h3>
@@ -24,7 +24,25 @@ let dashboard = Vue.component("dashboard", {
                                   </div>
                               </div>
                           </div>
-                      </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card progress_cards shadow-sm border-0">
+                                <div class="card-body">
+                                    <h3 class="heading"> Project working days </h3>
+                                    <div class=" bottom d-flex justify-content-between">
+                                        <div class="progresss d-flex">
+                                            <div class="qty">
+                                              <?= date_diff() ?> 
+                                            </div>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa-solid fa-arrow-trend-up"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                       <div class="col-md-4">
                           <div class="card progress_cards shadow-sm border-0">
