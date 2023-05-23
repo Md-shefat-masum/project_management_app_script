@@ -1,5 +1,7 @@
+var targeted_sheet = "gant_chart";
+var sheet_link = "https://docs.google.com/spreadsheets/d/1zRbOnEPdrMEKhQOEnQCOV823SimX_-oXeWDkpOfeed8/edit"
 function set_track_work_time(data) {
-  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
   const sheet = ss.getSheetByName('work_time_history');
   var last_row = sheet.getLastRow() + 1;
   sheet.getRange(last_row, 1).setValue(data?.date);
@@ -13,16 +15,44 @@ function set_track_work_time(data) {
 }
 
 function sum_of_track_secs() {
-  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
   const sheet = ss.getSheetByName('work_time_history');
   var last_row = sheet.getLastRow();
   const data = sheet.getRange(`E2:E` + last_row).getValues();
   return data.reduce((t, i) => t += (+i), 0);
 }
 
+function get_project_start_date(){
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName('gant_chart');
+  const value = sheet.getRange('B1').getValue();
+  return format_date(value);
+}
+
+function count_total_task(){
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName('gant_chart');
+  const value = sheet.getRange('B2').getValue();
+  return value;
+}
+
+function get_completed_progress(){
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName('gant_chart');
+  const value = sheet.getRange('B4').getValue();
+  return value;
+}
+
+function count_completed_task(){
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName('gant_chart');
+  const value = sheet.getRange('B3').getValue();
+  return value;
+}
+
 function getTasks() {
-  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
-  const sheet = ss.getSheetByName('maintain gant_chart');
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName(targeted_sheet);
   var last_row = sheet.getLastRow() + 1;
 
   const data = sheet.getRange("A12:O127").getValues();
@@ -117,21 +147,33 @@ function date_diff_days(from = "2023-06-09T01:00:00+0000", to = "2023-06-10T05:2
 }
 
 function complete_task(row_no, data = 1) {
-  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
-  const sheet = ss.getSheetByName('maintain gant_chart');
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName(targeted_sheet);
   sheet.getRange(`M${row_no}`).setValue(data);
 }
 
 function save_work_start_time(row_no, data) {
-  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
-  const sheet = ss.getSheetByName('maintain gant_chart');
-  sheet.getRange(`F${row_no}`).setValue(data);
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName(targeted_sheet);
+  sheet.getRange(`F${row_no}`).setValue(data).setNumberFormat("dd MMM, yyyy");
 }
 
 function save_work_end_time(row_no, data) {
-  const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1R7SVU4pjgUq6-mdo3oKEh644e5P05bdY20BSsorJtRk/edit')
-  const sheet = ss.getSheetByName('maintain gant_chart');
-  sheet.getRange(`G${row_no}`).setValue(data);
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName(targeted_sheet);
+  sheet.getRange(`G${row_no}`).setValue(data).setNumberFormat("dd MMM, yyyy");
+}
+
+function save_item_delay(row_no, data) {
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName(targeted_sheet);
+  sheet.getRange(`I${row_no}`).setValue(data);
+}
+
+function save_item_delay_comment(row_no, data) {
+  const ss = SpreadsheetApp.openByUrl(sheet_link)
+  const sheet = ss.getSheetByName(targeted_sheet);
+  sheet.getRange(`J${row_no}`).setValue(data);
 }
 
 function ms_to_hours(ms) {
