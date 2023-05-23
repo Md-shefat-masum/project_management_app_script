@@ -298,7 +298,8 @@ table tr td:nth-child(3) {
   width: 70px;
   background: transparent;
   color: white;
-  border: 0;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 .cells .delay_comment {
   max-width: 200px;
@@ -308,7 +309,8 @@ table tr td:nth-child(3) {
   height: 28px;
   background: transparent;
   color: white;
-  border: 0;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 .cells .completion_days {
   width: 155px;
